@@ -227,6 +227,8 @@ ghi789...      ollama                   Up 2 minutes
 ### ✅ Test 2 : API REST (Backend)
 ```bash
 curl http://localhost:8081/api/voitures
+<img width="973" height="529" alt="image" src="https://github.com/user-attachments/assets/d9ef009d-4526-46ab-a5a0-0e6112fc24fb" />
+
 ```
 **Résultat attendu :**
 ```json
