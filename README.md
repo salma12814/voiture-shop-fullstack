@@ -779,6 +779,7 @@ Après avoir démarré l'application :
 ## 📅 Dernière mise à jour
 
 **Mai 2026** - Documentation complète et mise à jour pour v1.0
+**Auteur** : Salma ISSAM
 
 ---
 
