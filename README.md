@@ -20,7 +20,7 @@
 
 ---
 
-## 👀 Vue d'ensemble
+##  Vue d'ensemble
 
 **Voiture Shop** est une application web full stack permettant de :
 
@@ -90,7 +90,7 @@ lsof -i :8081
 
 ```bash
 # 1. Cloner le repository
-git clone https://github.com/votre-username/voiture-shop-fullstack.git
+git clone https://github.com/salma12814/voiture-shop-fullstack.git
 cd voiture-shop-fullstack
 
 # 2. Démarrer tous les services
@@ -147,7 +147,7 @@ ollama pull llama2
 
 ---
 
-## 🎮 Guide d'utilisation
+##  Guide d'utilisation
 
 ### Écran d'accueil
 1. Ouvrir http://localhost:3001
@@ -166,22 +166,22 @@ ollama pull llama2
    - **Description** : optionnel
 3. Cliquez sur **"Ajouter"**
 
-#### ✏️ Modifier une voiture
+####  Modifier une voiture
 1. Dans la liste, cliquez sur l'icône **✏️** d'une voiture
 2. Modifiez les champs
 3. Cliquez sur **"Modifier"**
 
-#### 🗑️ Supprimer une voiture
+####  Supprimer une voiture
 1. Dans la liste, cliquez sur l'icône **🗑️**
 2. Confirmez la suppression
 
-#### 📋 Lister les voitures
+####  Lister les voitures
 - Cliquez sur **"Lister les Voitures"** dans la barre de navigation
 - Vous verrez toutes les voitures avec leurs détails
 
 ---
 
-### 🤖 Utiliser l'Assistant IA (Ollama)
+###  Utiliser l'Assistant IA (Ollama)
 
 #### Accéder à l'IA
 1. Allez sur la page **"Modifier"** d'une voiture existante
@@ -227,7 +227,7 @@ ghi789...      ollama                   Up 2 minutes
 ### ✅ Test 2 : API REST (Backend)
 ```bash
 curl http://localhost:8081/api/voitures
-<img width="973" height="529" alt="image" src="https://github.com/user-attachments/assets/d9ef009d-4526-46ab-a5a0-0e6112fc24fb" />
+
 
 ```
 **Résultat attendu :**
