@@ -124,7 +124,7 @@ docker ps
 
 ```bash
 # 1. Cloner le projet
-git clone https://github.com/votre-username/voiture-shop-fullstack.git
+git clone https://github.com/salma12814/voiture-shop-fullstack.git
 cd voiture-shop-fullstack
 
 # ═══ Terminal 1 : Backend ═══
