@@ -1,0 +1,63 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: h2-pv-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: h2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: h2
+  template:
+    metadata:
+      labels:
+        app: h2
+    spec:
+      containers:
+      - name: h2
+        image: eclipse-temurin:17-jre-alpine
+        command:
+          - sh
+          - -c
+          - |
+            wget -O /opt/h2.jar https://repo1.maven.org/maven2/com/h2database/h2/2.2.224/h2-2.2.224.jar
+            java -cp /opt/h2.jar org.h2.tools.Server \
+              -web -webPort 8082 \
+              -tcp -tcpPort 1521 -tcpAllowOthers \
+              -ifNotExists \
+              -baseDir /opt/h2-data
+        ports:
+        - containerPort: 1521
+        - containerPort: 8082
+        volumeMounts:
+        - name: h2-storage
+          mountPath: /opt/h2-data
+      volumes:
+      - name: h2-storage
+        persistentVolumeClaim:
+          claimName: h2-pv-claim
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: h2
+spec:
+  selector:
+    app: h2
+  ports:
+    - name: tcp
+      port: 1521
+      targetPort: 1521
+    - name: web
+      port: 8082
+      targetPort: 8082
