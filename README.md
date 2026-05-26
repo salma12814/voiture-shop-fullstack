@@ -1,9 +1,3 @@
-## ✅ README final – Version corrigée (commandes Docker avant Kubernetes)
-
-J’ai réorganisé le README pour que la section **Docker** (avec les commandes utiles) précède la section **Kubernetes**.  
-Voici le contenu définitif à copier dans `README.md` :
-
-```markdown
 # 🚗 Voiture Shop - Application Full Stack
 
 **Application complète de gestion de voitures** avec backend Spring Boot (API REST, JWT, H2, IA), frontend React, containerisation Docker, orchestration Kubernetes (Minikube) et monitoring Prometheus/Grafana.
@@ -12,7 +6,7 @@ Voici le contenu définitif à copier dans `README.md` :
 
 ## 📋 Table des matières
 
-- [Vue d’ensemble](#vue-densemble)
+- [Vue d'ensemble](#vue-densemble)
 - [Technologies](#technologies)
 - [Prérequis](#prérequis)
 - [Structure du projet](#structure-du-projet)
@@ -28,7 +22,7 @@ Voici le contenu définitif à copier dans `README.md` :
 
 ---
 
-## 🎯 Vue d’ensemble
+## 🎯 Vue d'ensemble
 
 | Fonctionnalité | Statut | Description |
 |----------------|--------|-------------|
@@ -109,7 +103,7 @@ docker-compose up -d --build          # Démarrer / reconstruire
 docker-compose down                   # Arrêter tous les services
 docker-compose logs -f backend        # Voir les logs du backend
 docker exec -it ollama ollama pull llama2  # Télécharger le modèle IA
-docker exec -it ollama ollama run llama2 "Bonjour"  # Tester l’IA
+docker exec -it ollama ollama run llama2 "Bonjour"  # Tester l'IA
 docker ps                             # Voir les conteneurs actifs
 ```
 
@@ -165,7 +159,7 @@ kubectl apply -f k8s/frontend-deployment.yaml
 kubectl get pods -w   # attendre Running (3 backend, 1 frontend, 1 h2)
 ```
 
-#### 3.6 Accéder à l’application
+#### 3.6 Accéder à l'application
 ```bash
 # API backend
 kubectl port-forward service/backend 8081:8081
@@ -180,7 +174,7 @@ kubectl port-forward service/frontend 3001:3001
 **Fonctionnement** :
 - Endpoint public : `POST /api/auth/login` (body `{ "username":"user", "password":"password" }`)
 - Retourne un token JWT.
-- Les endpoints `/api/voitures/**` et `/api/ai/**` nécessitent l’en‑tête `Authorization: Bearer <token>`.
+- Les endpoints `/api/voitures/**` et `/api/ai/**` nécessitent l'en‑tête `Authorization: Bearer <token>`.
 
 **Test avec curl** :
 ```bash
@@ -193,7 +187,7 @@ curl -H "Authorization: Bearer <TOKEN>" http://localhost:8081/api/voitures
 
 **Intégration frontend** :
 - `Login.js` stocke le token dans `localStorage`.
-- Un intercepteur Axios (dans `App.js`) ajoute automatiquement l’en‑tête `Authorization` à toutes les requêtes.
+- Un intercepteur Axios (dans `App.js`) ajoute automatiquement l'en‑tête `Authorization` à toutes les requêtes.
 - Les routes privées (`/list`, `/add`, `/edit/:id`) sont protégées par `PrivateRoute`.
 
 ---
@@ -228,7 +222,7 @@ cd ..
 |---------|----------|-------------|--------------|
 | POST | `/api/auth/login` | Authentification | ❌ |
 | GET | `/api/voitures` | Lister toutes les voitures | ✅ |
-| GET | `/api/voitures/{id}` | Détail d’une voiture | ✅ |
+| GET | `/api/voitures/{id}` | Détail d'une voiture | ✅ |
 | POST | `/api/voitures` | Ajouter une voiture | ✅ |
 | PUT | `/api/voitures/{id}` | Modifier une voiture | ✅ |
 | DELETE | `/api/voitures/{id}` | Supprimer une voiture | ✅ |
@@ -266,7 +260,7 @@ cd ..
 
 ---
 
-## 👨‍🏫 Remarques pour l’évaluation
+## 👨‍🏫 Remarques pour l'évaluation
 
 - **Authentification JWT** : les endpoints `/api/voitures*` sont protégés – seul `/api/auth/login` est public.
 - **CORS** : configuré pour accepter les requêtes depuis `http://localhost:3000` (frontend) et `http://localhost:3001` (fallback).
@@ -277,10 +271,3 @@ cd ..
 ---
 
 **Le projet est entièrement fonctionnel, sécurisé, containerisé, orchestré et monitoré.  
-Merci pour votre évaluation !** 🚀
-```
-
----
-
-Ce README respecte l’ordre demandé : les commandes Docker sont maintenant intégrées directement dans la section **Option 1 : Docker**, juste après l’installation. La partie Kubernetes vient ensuite, dans une section séparée.  
-Vous pouvez copier ce bloc dans votre fichier `README.md` et le pousser sur GitHub.
