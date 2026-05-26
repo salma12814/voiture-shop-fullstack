@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: backend
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: backend
@@ -20,13 +20,22 @@ spec:
         - containerPort: 8081
         env:
         - name: SPRING_DATASOURCE_URL
-          value: "jdbc:h2:tcp://h2:1521/voitureshop"
+          value: "jdbc:h2:tcp://$(DB_HOST):$(DB_PORT)/$(DB_NAME)"
         - name: SPRING_DATASOURCE_USERNAME
-          value: "sa"
+          valueFrom:
+            secretKeyRef:
+              name: h2-secret
+              key: username
         - name: SPRING_DATASOURCE_PASSWORD
-          value: ""
+          valueFrom:
+            secretKeyRef:
+              name: h2-secret
+              key: password
         - name: SPRING_AI_OLLAMA_BASE_URL
           value: "http://ollama:11434"
+        envFrom:
+        - configMapRef:
+            name: h2-config
 ---
 apiVersion: v1
 kind: Service
@@ -38,4 +47,4 @@ spec:
   ports:
     - port: 8081
       targetPort: 8081
-  type: NodePort   # Pour accéder à l’API depuis l’extérieur
+  type: NodePort
